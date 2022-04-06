@@ -1,0 +1,66 @@
+#jassteppich {
+    display: inline-grid;
+    grid-template-rows: 20px 760px 20px;
+    grid-template-columns: 20px 760px 20px;
+    border-radius: 100px;
+}
+
+#jassteppich div.rand {
+    background-image: url("assets/blue.png");
+    background-repeat: repeat-x repeat-y;
+}
+
+#jassteppich div.oben-links {
+    border-top-left-radius: 100%;
+    border-left: 5px solid #624a2e;
+    border-top: 5px solid #624a2e;
+}
+
+#jassteppich div.oben-rechts {
+    border-top-right-radius: 100%;
+    border-right: 5px solid #624a2e;
+    border-top: 5px solid #624a2e;
+}
+
+#jassteppich div.unten-rechts {
+    border-bottom-right-radius: 100%;
+    border-right: 5px solid #624a2e;
+    border-bottom: 5px solid #624a2e;
+}
+
+#jassteppich div.unten-links {
+    border-bottom-left-radius: 100%;
+    border-left: 5px solid #624a2e;
+    border-bottom: 5px solid #624a2e;
+}
+
+#jassteppich div.oben {
+    border-top: 5px solid #624a2e;
+}
+
+#jassteppich div.rechts {
+    border-right: 5px solid #624a2e;
+}
+
+#jassteppich div.unten {
+    border-bottom: 5px solid #624a2e;
+}
+
+#jassteppich div.links {
+    border-left: 5px solid #624a2e;
+}
+
+#jassteppich #spielfeld {
+    background-image: url("assets/green.png");
+    background-repeat: repeat-x repeat-y;
+    border: 1px solid grey;
+
+    display: grid;
+    grid-template-rows: 100px 1fr 100px;
+    grid-template-columns: 100px 1fr 100px;
+}
+
+#jassteppich #spielfeld img {
+    width: 100px;
+    height: 100px;
+}
