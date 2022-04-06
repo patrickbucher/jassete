@@ -1,7 +1,14 @@
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    background-color: #efefef;
+    color: #101010;
+}
+
 #jassteppich {
     display: grid;
-    grid-template-rows: 20px minmax(760px, auto) 20px;
-    grid-template-columns: 20px minmax(760px, auto) 20px;
+    grid-template-rows: 20px minmax(720px, auto) 20px;
+    grid-template-columns: 20px minmax(720px, auto) 20px;
     border-radius: 100px;
 }
 
@@ -63,4 +70,8 @@
 #jassteppich #spielfeld img {
     width: 100px;
     height: 100px;
+}
+
+#stereoalag {
+    margin-top: 1em;
 }
