@@ -1,6 +1,6 @@
 # Jassete
 
-Bei der _Jassete_ geht es etwas hoch her. Nachdem Göpf Egg verstorben ist und
+Bei der _Jassete_ geht es etwas hoch her. Nachdem Göpf Egg verstorben ist, und
 sich die Jasser mangels seiner Expertise nur noch um die Regeln streiten, hat
 auch Monika Fasnacht keine Lust mehr auf diese Jassrunde. Das Cabaret Rotstift
 zankt sich derweil vor dem Restaurant an der Ecke, sodass nur noch Sepp Trütsch
@@ -40,3 +40,9 @@ Bei einem _Unentschieden_, z.B. wenn ein Schellen-Under auf einen Schilten-Under
 folgt, erhälst du dein Geld zurück. Sepp Trütsch geht leer aus.
 
 ![Screenshot](screenshot.png)
+
+### Hardcore Mode
+
+Betätige den _Play_-Button am unteren Bildschirmrand um einen _lüpfigen
+Hudigäggeler_ zu starten. Das verleiht Sepp Trütsch Superkräfte und lenkt dich
+vom Spiel ab.
