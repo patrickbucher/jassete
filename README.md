@@ -8,6 +8,8 @@ einsam am Tisch sitzt. Da ihm die Volksmusik auch nicht mehr so viel einbringt,
 beschliesst er, dich bei einem Glücksspiel zu übervorteilen. Der Jassteppich ist
 ausgelegt und die Karten gemischt.
 
+![Screenshot](screenshot.png)
+
 ## Spielregeln
 
 Jetzt legt der Sepp eine Karte nach der anderen auf den Tisch. Nachdem die erste
@@ -38,8 +40,6 @@ _absteigende_ Sortierreihenfolge:
 
 Bei einem _Unentschieden_, z.B. wenn ein Schellen-Under auf einen Schilten-Under
 folgt, erhälst du dein Geld zurück. Sepp Trütsch geht leer aus.
-
-![Screenshot](screenshot.png)
 
 ### Hardcore Mode
 
