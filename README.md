@@ -1,4 +1,4 @@
-# Jassete
+# Jassete [in Arbeit]
 
 Bei der _Jassete_ geht es etwas hoch her. Nachdem Göpf Egg verstorben ist, und
 sich die Jasser mangels seiner Expertise nur noch um die Regeln streiten, hat

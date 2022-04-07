@@ -94,8 +94,6 @@ function clearChildren(element) {
 document.addEventListener("DOMContentLoaded", () => {
     const deck = createDeck();
     const shuffledDeck = shuffle(deck);
-    console.log(deck);
-    console.log(shuffledDeck);
     const minOverlap = 135;
     const maxOverlap = 150;
     const overlapRange = maxOverlap - minOverlap;
@@ -110,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const age = deck.length - i;
         const overlap = minOverlap + overlapPerCard * age;
         if (i > 0) {
-            console.log(overlap);
             cardImage.setAttribute("style", `margin-left: -${overlap}px;`);
         }
         stackContainer.appendChild(cardImage)
