@@ -45,8 +45,8 @@ h2 {
 
 #jassteppich {
     display: grid;
-    grid-template-rows: 20px minmax(620px, auto) 20px;
-    grid-template-columns: 20px minmax(620px, auto) 20px;
+    grid-template-rows: 20px minmax(720px, auto) 20px;
+    grid-template-columns: 20px minmax(980px, auto) 20px;
     border-radius: 100px;
 }
 
@@ -95,7 +95,7 @@ h2 {
     border-left: 5px solid #624a2e;
 }
 
-#jassteppich #spielfeld {
+#spielfeld {
     background-image: url("assets/green.png");
     background-repeat: repeat-x repeat-y;
     border: 1px solid grey;
@@ -105,9 +105,14 @@ h2 {
     grid-template-columns: 100px 1fr 100px;
 }
 
-#jassteppich #spielfeld img {
+#spielfeld img.symbol {
     width: 100px;
     height: 100px;
+}
+
+#cardstack img {
+    width: 161px;
+    height: 247px;
 }
 
 #stereoalag {
