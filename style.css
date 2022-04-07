@@ -7,13 +7,19 @@ body {
     background-repeat: repeat-x repeat-y;
 }
 
-h1 {
-    margin: 1em;
+h1, h2 {
+    margin: 1em 0;
     font-style: italic;
     font-variant: small-caps;
     font-family: serif;
     text-align: center;
     font-size: 300%;
+    text-shadow: 2px 2px white;
+}
+
+h2 {
+    font-size: 180%;
+    text-shadow: 1px 1px white;
 }
 
 #bilderwand {
@@ -29,8 +35,8 @@ h1 {
 
 #bilderwand p {
     border: 1px solid gold;
-    background-color: #654321;
-    color: silver;
+    background-color: #8b4513;
+    color: #d3d3d3;
     padding: 0.5em;
     font-weight: bold;
     font-variant: small-caps;
@@ -39,8 +45,8 @@ h1 {
 
 #jassteppich {
     display: grid;
-    grid-template-rows: 20px minmax(720px, auto) 20px;
-    grid-template-columns: 20px minmax(720px, auto) 20px;
+    grid-template-rows: 20px minmax(620px, auto) 20px;
+    grid-template-columns: 20px minmax(620px, auto) 20px;
     border-radius: 100px;
 }
 
@@ -106,4 +112,5 @@ h1 {
 
 #stereoalag {
     margin-top: 1em;
+    text-align: center;
 }
