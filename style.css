@@ -3,6 +3,38 @@ body {
     font-size: 16px;
     background-color: #efefef;
     color: #101010;
+    background-image: url("assets/tischdecke.jpg");
+    background-repeat: repeat-x repeat-y;
+}
+
+h1 {
+    margin: 1em;
+    font-style: italic;
+    font-variant: small-caps;
+    font-family: serif;
+    text-align: center;
+    font-size: 300%;
+}
+
+#bilderwand {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 300px 1fr;
+    justify-items: center;
+}
+
+#bilderwand img {
+    height: 300px;
+}
+
+#bilderwand p {
+    border: 1px solid gold;
+    background-color: #654321;
+    color: silver;
+    padding: 0.5em;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-family: serif;
 }
 
 #jassteppich {
