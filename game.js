@@ -91,25 +91,20 @@ function clearChildren(element) {
     }
 }
 
+function layCard(card, container) {
+    const cardImage = document.createElement("img");
+    cardImage.setAttribute("src", card.imagePath());
+    cardImage.setAttribute("alt", card.name());
+    cardImage.setAttribute("class", "card");
+    container.appendChild(cardImage)
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const deck = createDeck();
     const shuffledDeck = shuffle(deck);
-    const minOverlap = 135;
-    const maxOverlap = 150;
-    const overlapRange = maxOverlap - minOverlap;
-    const overlapPerCard = overlapRange / deck.length;
+    const stackContainer = document.getElementById("cardstack");
     for (const i in shuffledDeck) {
         const card = shuffledDeck[i];
-        const stackContainer = document.getElementById("cardstack");
-        const cardImage = document.createElement("img");
-        cardImage.setAttribute("src", card.imagePath());
-        cardImage.setAttribute("alt", card.name());
-        cardImage.setAttribute("class", "card");
-        const age = deck.length - i;
-        const overlap = minOverlap + overlapPerCard * age;
-        if (i > 0) {
-            cardImage.setAttribute("style", `margin-left: -${overlap}px;`);
-        }
-        stackContainer.appendChild(cardImage)
+        layCard(card, stackContainer);
     }
 });
