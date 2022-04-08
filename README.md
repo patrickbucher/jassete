@@ -1,12 +1,12 @@
 # Jassete [in Arbeit]
 
-Bei der _Jassete_ geht es etwas hoch her. Nachdem Göpf Egg verstorben ist, und
-sich die Jasser mangels seiner Expertise nur noch um die Regeln streiten, hat
-auch Monika Fasnacht keine Lust mehr auf diese Jassrunde. Das Cabaret Rotstift
-zankt sich derweil vor dem Restaurant an der Ecke, sodass nur noch Sepp Trütsch
-einsam am Tisch sitzt. Da ihm die Volksmusik auch nicht mehr so viel einbringt,
+Bei der _Jassete_ geht es hoch her! Nachdem Göpf Egg verstorben ist, und sich
+die Jasser mangels seiner Expertise nur noch um die Regeln streiten, hat auch
+Monika Fasnacht keine Lust mehr auf diese Jassrunde. Das Cabaret Rotstift zankt
+sich derweil vor dem Restaurant an der Ecke, sodass nur noch Sepp Trütsch einsam
+am Tisch sitzt. Da ihm die Volksmusik auch nicht mehr so viel einbringt,
 beschliesst er, dich bei einem Glücksspiel zu übervorteilen. Der Jassteppich ist
-ausgelegt und die Karten gemischt.
+ausgelegt und die sind Karten gemischt.
 
 ![Screenshot](screenshot.png)
 
@@ -39,7 +39,7 @@ _absteigende_ Sortierreihenfolge:
 3. Eichel
 
 Bei einem _Unentschieden_, z.B. wenn ein Schellen-Under auf einen Schilten-Under
-folgt, erhälst du dein Geld zurück. Sepp Trütsch geht leer aus.
+folgt, verlierst du dein Geld an Sepp Trütsch.
 
 ### Hardcore Mode
 
