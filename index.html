@@ -9,10 +9,10 @@
     <body>
         <h1>Rüüdigs cheibe Jass-Stübli</h1>
         <section id="bilderwand">
-            <img src="assets/cabaret-rotstift.jpg">
-            <img src="assets/goepf-egg.jpg">
-            <img src="assets/monika-fasnacht.jpg">
-            <img src="assets/sepp-truetsch.jpg">
+            <img src="assets/cabaret-rotstift.jpg" alt="Cabaret Rotstift">
+            <img src="assets/goepf-egg.jpg" alt="Göpf Egg">
+            <img src="assets/monika-fasnacht.jpg" alt="Monika Fasnacht">
+            <img src="assets/sepp-truetsch.jpg" alt="Sepp Trütsch">
             <p>Cabaret Rotstift</p>
             <p>Göpf Egg</p>
             <p>Monika Fasnacht</p>
@@ -24,32 +24,37 @@
             <div class="rand ecke oben-rechts"></div>
             <div class="rand links"></div>
             <div id="spielfeld">
-                <div><img class="symbol" src="assets/rose.png"></div>
+                <div><img class="symbol" src="assets/rose.png" alt="Rose"></div>
                 <div></div>
-                <div><img class="symbol" src="assets/schilte.png"></div>
+                <div><img class="symbol" src="assets/schilte.png" alt="Schlte"></div>
                 <div></div>
                 <div>
                     <div id="cardstack"></div>
                     <div id="controls">
                         <form>
                             <div>
-                                <label for="balance">Kontostand</label>
-                                <input id="balance" type="text" readonly="readonly"> 
+                                <label for="balance">Kontostand:</label>
+                                <input id="balance" type="text" readonly="readonly">
+                                <span class="currency">sFr.</span>
                                 <button id="higher">Höher</button>
                             </div>
                             <div>
-                                <label for="bet">Einsatz</label>
-                                <input id="bet" type="number" step="0.05"> 
+                                <label for="bet">Einsatz:</label>
+                                <input id="bet" type="number" step="0.05" min="0.05">
+                                <span class="currency">sFr.</span>
                                 <button id="lower">Tiefer</button>
                             </div>
-                            <p id="message">Huere verreckte Cheib!</p>
                         </form>
+                        <div id="notification">
+                            <p>Sepp Trütsch sagt:</p>
+                            <p id="message">«Verreckte Herrgottscheib, los!»</p>
+                        </div>
                     </div>
                 </div>
                 <div></div>
-                <div><img class="symbol" src="assets/eichel.png"></div>
+                <div><img class="symbol" src="assets/eichel.png" alt="Eichel"></div>
                 <div></div>
-                <div><img class="symbol" src="assets/schelle.png"></div>
+                <div><img class="symbol" src="assets/schelle.png" alt="Schelle"></div>
             </div>
             <div class="rand rechts"></div>
             <div class="rand ecke unten-links"></div>

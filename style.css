@@ -113,16 +113,19 @@ h2 {
 #cardstack img {
     width: 161px;
     height: 247px;
+    margin: 5px;
 }
 
 #controls {
-    border: 1em solid #c4a484;
-    border-radius: 1em;
+    border: 2em solid #c4a484;
+    border-radius: 2em;
     background-color: black;
     height: 300px;
     padding: 1em;
     margin: 1em 4em;
     font-size: 16pt;
+    font-weight: bold;
+    font-family: "Comic Sans", sans-serif;
 }
 
 #controls div {
@@ -134,31 +137,49 @@ h2 {
     color: white;
     margin-right: 1em;
     text-align: right;
-    width: 10em;
+    width: 8em;
     display: inline-block;
 }
 
+
+#controls .currency {
+    color: white;
+}
+
 #controls input[type="text"] {
-    width: 8em;
+    width: 6em;
     font-size: 16pt;
+    text-align: right;
+}
+
+#balance {
+    font-weight: bold;
 }
 
 #controls input[type="number"] {
-    width: 8em;
+    width: 6em;
     font-size: 16pt;
+    text-align: right;
 }
 
 #controls button {
     margin-left: 1em;
     width: 8em;
-    font-size: 14pt;
+    height: 2.5em;
+    font-size: 16pt;
+}
+
+#controls #notification {
+    margin-top: 2em;
+    font-size: 16pt;
+    color: white;
+}
+
+#controls #notification p {
 }
 
 #controls #message {
-    padding: 1em;
-    color: white;
     font-style: italic;
-    font-size: 16pt;
 }
 
 #stereoalag {

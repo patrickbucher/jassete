@@ -16,7 +16,7 @@ const ranks = {
     '9': 3,
     '8': 2,
     '7': 1,
-    '6': 0
+    '6': 0,
 };
 
 class Card {
@@ -99,12 +99,81 @@ function layCard(card, container) {
     container.appendChild(cardImage)
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const deck = createDeck();
-    const shuffledDeck = shuffle(deck);
-    const stackContainer = document.getElementById("cardstack");
-    for (const i in shuffledDeck) {
-        const card = shuffledDeck[i];
-        layCard(card, stackContainer);
+function pullCard(deck) {
+    if (deck.length < 1) {
+        throw new Error("Deck is empty.");
     }
+    return {
+        card: deck[0],
+        deck: deck.slice(1),
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const stackContainer = document.getElementById("cardstack");
+    const balanceInput = document.getElementById("balance");
+    const betInput = document.getElementById("bet");
+    const higherButton = document.getElementById("higher");
+    const lowerButton = document.getElementById("lower");
+    const messageContainer = document.getElementById("message");
+
+    const notify = (message) => {
+        messageContainer.innerHTML = `«${message}»`;
+    };
+
+    const updateControls = (balance) => {
+        balanceInput.value = balance;
+        betInput.setAttribute("max", balance);
+    };
+
+    let deck = shuffle(createDeck());
+    let balance = 100.0;
+    let defaultBet = 5.0;
+    betInput.value = `${defaultBet}`;
+    updateControls(balance);
+
+    let {card: lastCard, deck: newDeck} = pullCard(deck);
+    layCard(lastCard, stackContainer);
+    deck = newDeck;
+
+    const makeBet = (decision) => {
+        if (deck.length < 1) {
+            notify("Huere Lappi! Alle Karten wurden bereits gespielt!");
+            return
+        }
+        const bet = Number.parseInt(betInput.value);
+        if (Number.isNaN(bet)) {
+            notify(`Huere Löli! ‹${betInput.value}› ist doch keine Gebot!`);
+            return;
+        }
+        if (bet > balance) {
+            notify(`Huere Plagöri! Du hast ja nur ${balance}!`);
+            return;
+        }
+        let {card: newCard, deck: newDeck} = pullCard(deck);
+        layCard(newCard, stackContainer);
+        if (newCard.compareTo(lastCard) > 0 && decision === "higher" ||
+            newCard.compareTo(lastCard) < 0 && decision === "lower") {
+            balance += bet;
+            notify(`Huere Glöggliböög! Du gewinnst ${bet}!`);
+        } else {
+            balance -= bet;
+            notify(`Huere Söörmu! Du verlierst ${bet}!`);
+        }
+        deck = newDeck;
+        lastCard = newCard;
+        updateControls(balance);
+        if (deck.length == 0) {
+            notify(`Das Spiel ist vorbei. Du hast ${balance} Stutz gewonnen!`);
+        }
+    };
+
+    higherButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        makeBet("higher");
+    });
+    lowerButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        makeBet("lower");
+    });
 });
