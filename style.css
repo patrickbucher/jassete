@@ -43,7 +43,23 @@ h2 {
     font-family: serif;
 }
 
+section.blabla div {
+    margin: 1em;
+    padding: 2em;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    background-color: #ffeeee;
+    font-size: 130%;
+    hyphens: auto;
+    box-shadow: 5px 5px 1em black;
+}
+
+section.blabla p {
+    text-align: justify;
+}
+
 #jassteppich {
+    margin: 1em;
     display: grid;
     grid-template-rows: 20px minmax(720px, auto) 20px;
     grid-template-columns: 20px minmax(980px, auto) 20px;
