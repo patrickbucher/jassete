@@ -166,7 +166,13 @@ document.addEventListener("DOMContentLoaded", () => {
         lastCard = newCard;
         updateControls(balance);
         if (deck.length == 0) {
-            notify(`Das Spiel ist vorbei. Du hast ${balance} Stutz gewonnen!`);
+            setTimeout(() => {
+                notify(`Das Spiel ist vorbei. Du hast ${balance} Stutz gewonnen!`);
+            }, 2000);
+        } else if (balance == 0) {
+            setTimeout(() => {
+                notify(`Huere Fötzu! Du hast ja alles verspielt!`);
+            }, 2000);
         }
     };
 
