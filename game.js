@@ -43,7 +43,7 @@ class Card {
             return -1;
         } else if (suites[this.suite] > suites[other.suite]) {
             return 1;
-        } else if (suites[this.suite] > suites[other.suite]) {
+        } else if (suites[this.suite] < suites[other.suite]) {
             return -1;
         } else {
             return 0;
