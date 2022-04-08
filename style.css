@@ -115,6 +115,52 @@ h2 {
     height: 247px;
 }
 
+#controls {
+    border: 1em solid #c4a484;
+    border-radius: 1em;
+    background-color: black;
+    height: 300px;
+    padding: 1em;
+    margin: 1em 4em;
+    font-size: 16pt;
+}
+
+#controls div {
+    margin: 1em;
+    height: 2em;
+}
+
+#controls label {
+    color: white;
+    margin-right: 1em;
+    text-align: right;
+    width: 10em;
+    display: inline-block;
+}
+
+#controls input[type="text"] {
+    width: 8em;
+    font-size: 16pt;
+}
+
+#controls input[type="number"] {
+    width: 8em;
+    font-size: 16pt;
+}
+
+#controls button {
+    margin-left: 1em;
+    width: 8em;
+    font-size: 14pt;
+}
+
+#controls #message {
+    padding: 1em;
+    color: white;
+    font-style: italic;
+    font-size: 16pt;
+}
+
 #stereoalag {
     margin-top: 1em;
     text-align: center;
