@@ -145,8 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (Number.isNaN(bet)) {
             notify(`Huere Löli! ‹${betInput.value}› ist doch keine Gebot!`);
             return;
-        }
-        if (bet > balance) {
+        } else if (balance == 0) {
+            notify(`Huere Fötzu! Du hast ja alles verspielt!`);
+            return;
+        } else if (bet > balance) {
             notify(`Huere Plagöri! Du hast ja nur ${balance}!`);
             return;
         }
