@@ -116,24 +116,24 @@ h2 {
     margin: 5px;
 }
 
-#controls {
+#jasstafel {
     border: 2em solid #c4a484;
     border-radius: 2em;
     background-color: black;
     height: 300px;
     padding: 1em;
-    margin: 1em 4em;
+    margin: 1em 0;
     font-size: 16pt;
     font-weight: bold;
     font-family: "Comic Sans", sans-serif;
 }
 
-#controls div {
+#jasstafel div {
     margin: 1em;
     height: 2em;
 }
 
-#controls label {
+#jasstafel label {
     color: white;
     margin-right: 1em;
     text-align: right;
@@ -142,11 +142,11 @@ h2 {
 }
 
 
-#controls .currency {
+#jasstafel .currency {
     color: white;
 }
 
-#controls input[type="text"] {
+#jasstafel input[type="text"] {
     width: 6em;
     font-size: 16pt;
     text-align: right;
@@ -156,29 +156,26 @@ h2 {
     font-weight: bold;
 }
 
-#controls input[type="number"] {
+#jasstafel input[type="number"] {
     width: 6em;
     font-size: 16pt;
     text-align: right;
 }
 
-#controls button {
+#jasstafel button {
     margin-left: 1em;
     width: 8em;
     height: 2.5em;
     font-size: 16pt;
 }
 
-#controls #notification {
+#jasstafel #notification {
     margin-top: 2em;
     font-size: 16pt;
     color: white;
 }
 
-#controls #notification p {
-}
-
-#controls #message {
+#jasstafel #message {
     font-style: italic;
 }
 
