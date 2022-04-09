@@ -144,6 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const betInput = document.getElementById("bet");
     const higherButton = document.getElementById("higher");
     const lowerButton = document.getElementById("lower");
+    const minButton = document.getElementById("minBet");
+    const maxButton = document.getElementById("maxBet");
     const messageContainer = document.getElementById("message");
 
     const notify = (message) => {
@@ -200,8 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // - return last card, remaining deck, win, maybe message
     // TODO: display
     // - show how many cards have been dealt (e.g. 13/36)
-    // TODO: controls
-    // - add "min"/"max" buttons for min/max bet
     const makeBet = (decision) => {
         if (deck.length < 1) {
             notify("Huere Lappi! Alle Karten wurden bereits gespielt!");
@@ -255,5 +255,14 @@ document.addEventListener("DOMContentLoaded", () => {
     lowerButton.addEventListener("click", (e) => {
         e.preventDefault();
         makeBet("lower");
+    });
+
+    minButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        betInput.value = betInput.getAttribute("min");
+    });
+    maxButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        betInput.value = balanceInput.value;
     });
 });

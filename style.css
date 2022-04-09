@@ -163,7 +163,7 @@ section.blabla p {
 }
 
 #jasstafel input[type="text"] {
-    width: 6em;
+    width: 10em;
     font-size: 16pt;
     text-align: right;
 }
@@ -178,11 +178,15 @@ section.blabla p {
     text-align: right;
 }
 
-#jasstafel button {
+#jasstafel button.bet {
     margin-left: 1em;
     width: 8em;
     height: 2.5em;
     font-size: 16pt;
+}
+
+#jasstafel button.minmax {
+    padding-bottom: 0.25em;
 }
 
 #jasstafel #notification {
