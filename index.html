@@ -73,22 +73,30 @@
                     <div>
                         <div id="cardstack"></div>
                         <div id="jasstafel">
-                            <form>
-                                <div>
-                                    <label for="balance">Kontostand:</label>
-                                    <input id="balance" type="text" readonly="readonly">
-                                    <span class="currency">sFr.</span>
-                                    <button class="bet" id="higher">Höher</button>
-                                </div>
-                                <div>
-                                    <label for="bet">Einsatz:</label>
-                                    <button id="minBet" class="minmax">min</button>
+                            <div class="label">
+                                <label for="balance">Kontostand:</label>
+                            </div>
+                            <div id="balanceContainer">
+                                <input id="balance" type="text" readonly="readonly">
+                                <span>sFr.</span>
+                            </div>
+                            <div>
+                                <button class="bet" id="higher">Höher</button>
+                            </div>
+                            <div class="label">
+                                <label for="bet">Einsatz:</label>
+                            </div>
+                            <div id="betContainer">
+                                <div id="minmax">
                                     <button id="maxBet" class="minmax">max</button>
-                                    <input id="bet" type="number" step="0.05" min="0.05">
-                                    <span class="currency">sFr.</span>
-                                    <button class="bet" id="lower">Tiefer</button>
+                                    <button id="minBet" class="minmax">min</button>
                                 </div>
-                            </form>
+                                <input id="bet" type="number" step="0.05" min="0.05">
+                                <span>sFr.</span>
+                            </div>
+                            <div>
+                                <button class="bet" id="lower">Tiefer</button>
+                            </div>
                             <div id="notification">
                                 <p>Sepp Trütsch sagt:</p>
                                 <p id="message">«Verreckte Herrgottscheib, los!»</p>
