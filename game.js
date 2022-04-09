@@ -189,8 +189,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const granularity = Number.parseFloat(betInput.getAttribute("step"));
 
     let deck = shuffle(createDeck());
-    let balance = 100.0;
-    let defaultBet = 5.0;
+    let balance = 1.0;
+    let defaultBet = 0.05;
     betInput.value = `${defaultBet}`;
     cardY.innerHTML = deck.length;
 
