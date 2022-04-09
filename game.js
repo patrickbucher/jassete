@@ -205,8 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // TODO: refactoring
     // - accept last card, remaining deck, bet
     // - return last card, remaining deck, win, maybe message
-    // TODO: display
-    // - show how many cards have been dealt (e.g. 13/36)
     const makeBet = (decision) => {
         if (deck.length < 1) {
             notify("Huere Lappi! Alle Karten wurden bereits gespielt!");
