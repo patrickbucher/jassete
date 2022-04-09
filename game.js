@@ -136,6 +136,9 @@ document.addEventListener("DOMContentLoaded", () => {
     layCard(lastCard, stackContainer);
     deck = newDeck;
 
+    // TODO: refactoring
+    // - accept last card, remaining deck, bet
+    // - return last card, remaining deck, win, maybe message
     const makeBet = (decision) => {
         if (deck.length < 1) {
             notify("Huere Lappi! Alle Karten wurden bereits gespielt!");
