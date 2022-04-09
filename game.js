@@ -109,6 +109,35 @@ function pullCard(deck) {
     }
 }
 
+function calcProbabilities(lastCard, remainingDeck) {
+    let higherCards = 0;
+    let equalCards = 0;
+    let lowerCards = 0;
+    for (let card of remainingDeck) {
+        switch (card.compareTo(lastCard)) {
+            case 1:
+                higherCards++;
+                break;
+            case 0:
+                equalCards++;
+                break
+            case -1:
+                lowerCards++;
+                break
+        }
+    }
+    return [
+        {outcome: "P(Higher)", prob: higherCards / remainingDeck.length},
+        {outcome: "P(Lower)", prob: lowerCards / remainingDeck.length},
+        {outcome: "P(Equal)", prob: equalCards / remainingDeck.length}
+    ];
+}
+
+function round(value, granularity) {
+    const rounded = Math.round((1 / granularity) * value) * granularity;
+    return Math.floor(rounded * 100) / 100;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const stackContainer = document.getElementById("cardstack");
     const balanceInput = document.getElementById("balance");
@@ -126,6 +155,34 @@ document.addEventListener("DOMContentLoaded", () => {
         betInput.setAttribute("max", balance);
     };
 
+    const proposeBet = (probs, balance, granularity) => {
+        const {outcome, prob} = probs.reduce(({outcome: maxO, prob: maxP}, {outcome: o, prob: p}) => {
+            if (p > maxP) {
+                return {outcome: o, prob: p};
+            } else {
+                return {outcome: maxO, prob: maxP};
+            }
+        }, {outcome: undefined, prob: 0.0});
+
+        const idealBet = balance * prob;
+        const maxIdealBet = Math.min(balance, idealBet);
+        const betLinear = round(maxIdealBet, granularity);
+
+        // discount probability quadratically
+        const conservativeBet = balance * Math.pow(prob, 2);
+        const maxConservativeBet = Math.min(balance, conservativeBet);
+        const betSquared = round(maxConservativeBet, granularity);
+        return {
+            outcome: outcome,
+            prob: round(prob, 0.01),
+            betLinear: betLinear,
+            betSquared: betSquared
+        };
+    };
+
+    const minBet = Number.parseFloat(betInput.getAttribute("min"));
+    const granularity = Number.parseFloat(betInput.getAttribute("step"));
+
     let deck = shuffle(createDeck());
     let balance = 100.0;
     let defaultBet = 5.0;
@@ -136,17 +193,26 @@ document.addEventListener("DOMContentLoaded", () => {
     layCard(lastCard, stackContainer);
     deck = newDeck;
 
+    console.log(proposeBet(calcProbabilities(lastCard, newDeck), balance, granularity));
+
     // TODO: refactoring
     // - accept last card, remaining deck, bet
     // - return last card, remaining deck, win, maybe message
+    // TODO: display
+    // - show how many cards have been dealt (e.g. 13/36)
+    // TODO: controls
+    // - add "min"/"max" buttons for min/max bet
     const makeBet = (decision) => {
         if (deck.length < 1) {
             notify("Huere Lappi! Alle Karten wurden bereits gespielt!");
             return
         }
-        const bet = Number.parseInt(betInput.value);
+        const bet = Number.parseFloat(betInput.value);
         if (Number.isNaN(bet)) {
             notify(`Huere Löli! ‹${betInput.value}› ist doch keine Gebot!`);
+            return;
+        } else if (bet < minBet) {
+            notify(`Huere Löli! ‹${bet}› zu bieten ist doch s Bättle versuumet!`);
             return;
         } else if (balance == 0) {
             notify(`Huere Fötzu! Du hast ja alles verspielt!`);
@@ -165,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
             balance -= bet;
             notify(`Huere Söörmu! Du verlierst ${bet}!`);
         }
+        balance = round(balance, granularity);
         deck = newDeck;
         lastCard = newCard;
         updateControls(balance);
@@ -176,6 +243,8 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 notify(`Huere Fötzu! Du hast ja alles verspielt!`);
             }, 2000);
+        } else {
+            console.log(proposeBet(calcProbabilities(lastCard, newDeck), balance, granularity));
         }
     };
 
