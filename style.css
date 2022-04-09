@@ -219,7 +219,7 @@ section.blabla p {
 
 #jasstafel #notification {
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 3;
 }
 
 #jasstafel #message {

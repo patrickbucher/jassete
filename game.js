@@ -147,14 +147,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const minButton = document.getElementById("minBet");
     const maxButton = document.getElementById("maxBet");
     const messageContainer = document.getElementById("message");
+    const cardX = document.getElementById("cardX");
+    const cardY = document.getElementById("cardY");
 
     const notify = (message) => {
         messageContainer.innerHTML = `«${message}»`;
     };
 
-    const updateControls = (balance) => {
+    const updateControls = (balance, nCardsPlayed) => {
         balanceInput.value = balance;
         betInput.setAttribute("max", balance);
+        cardX.innerHTML = nCardsPlayed;
     };
 
     const proposeBet = (probs, balance, granularity) => {
@@ -189,10 +192,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let balance = 100.0;
     let defaultBet = 5.0;
     betInput.value = `${defaultBet}`;
-    updateControls(balance);
+    cardY.innerHTML = deck.length;
 
     let {card: lastCard, deck: newDeck} = pullCard(deck);
+    let nCardsPlayed = 1;
     layCard(lastCard, stackContainer);
+    updateControls(balance, nCardsPlayed);
     deck = newDeck;
 
     console.log(proposeBet(calcProbabilities(lastCard, newDeck), balance, granularity));
@@ -234,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
         balance = round(balance, granularity);
         deck = newDeck;
         lastCard = newCard;
-        updateControls(balance);
+        updateControls(balance, ++nCardsPlayed);
         if (deck.length == 0) {
             setTimeout(() => {
                 notify(`Das Spiel ist vorbei. Du hast ${balance} Stutz gewonnen!`);
