@@ -84,13 +84,6 @@ function shuffle(deck) {
     return shuffledDeck;
 }
 
-function clearChildren(element) {
-    while (element.hasChildren()) {
-        const child = element.children[0];
-        element.removeChild(child);
-    }
-}
-
 function layCard(card, container) {
     const cardImage = document.createElement("img");
     cardImage.setAttribute("src", card.imagePath());
@@ -173,15 +166,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const maxIdealBet = Math.min(balance, idealBet);
         const betLinear = round(maxIdealBet, granularity);
 
-        // discount probability quadratically
+        // conservative bet: discount probability quadratically
         const conservativeBet = balance * Math.pow(prob, 2);
         const maxConservativeBet = Math.min(balance, conservativeBet);
         const betSquared = round(maxConservativeBet, granularity);
+
+        // very conservative bet: discount probability cubically
+        const veryConservativeBet = balance * Math.pow(prob, 3);
+        const maxVeryConservativeBet = Math.min(balance, veryConservativeBet);
+        const betCubed = round(maxVeryConservativeBet, granularity);
+
         return {
             outcome: outcome,
             prob: round(prob, 0.01),
             betLinear: betLinear,
-            betSquared: betSquared
+            betSquared: betSquared,
+            betCubed: betCubed,
         };
     };
 
