@@ -1,69 +1,29 @@
 body {
-    font-family: sans-serif;
-    font-size: 16px;
     background-color: #efefef;
     color: #101010;
     background-image: url("assets/tischdecke.jpg");
     background-repeat: repeat-x repeat-y;
+    min-width: 350px;
 }
 
 h1, h2 {
-    margin: 1em 0;
     font-style: italic;
     font-variant: small-caps;
-    font-family: serif;
     text-align: center;
-    font-size: 300%;
+}
+
+h1 {
     text-shadow: 2px 2px white;
 }
 
 h2 {
-    font-size: 180%;
     text-shadow: 1px 1px white;
 }
 
-#bilderwand {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 300px 1fr;
-    justify-items: center;
-}
-
-#bilderwand img {
-    height: 300px;
-}
-
-#bilderwand p {
-    border: 1px solid gold;
-    background-color: #8b4513;
-    color: #d3d3d3;
-    padding: 0.5em;
-    font-weight: bold;
-    font-variant: small-caps;
-    font-family: serif;
-}
-
-section.blabla div {
-    margin: 1em;
-    padding: 2em;
-    border: 1px solid black;
-    border-radius: 0.5em;
-    background-color: #ffeeee;
-    font-size: 130%;
-    hyphens: auto;
-    box-shadow: 5px 5px 1em black;
-}
-
-section.blabla p {
-    text-align: justify;
-}
-
 #jassteppich {
-    margin: 1em;
     display: grid;
-    grid-template-rows: 20px minmax(720px, auto) 20px;
-    grid-template-columns: 20px minmax(980px, auto) 20px;
-    border-radius: 100px;
+    grid-template-rows: 1em auto 1em;
+    grid-template-columns: 1em minmax(325px, auto) 1em;
 }
 
 #jassteppich div.rand {
@@ -117,19 +77,39 @@ section.blabla p {
     border: 1px solid grey;
 
     display: grid;
-    grid-template-rows: 100px 1fr 100px;
-    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-columns: 50px 1fr 50px;
+    justify-items: center;
 }
 
 #spielfeld img.symbol {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
+}
+
+#cardstack {
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 #cardstack img {
     width: 161px;
     height: 247px;
-    margin: 5px;
+}
+
+#cardstack img:not(:first-child) {
+    margin-top: -200px;
+}
+
+#fortschritt {
+    border: 1px solid gold;
+    background-color: #8b4513;
+    color: #d3d3d3;
+    margin: 8pt 0 0 0;
+    padding: 5px;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 90%;
 }
 
 #jasstafel {
@@ -138,88 +118,45 @@ section.blabla p {
     background-color: black;
 
     display: grid;
-    grid-template-rows: 1fr 1fr auto;
-    grid-template-columns: 30% 40% 30%;
-    align-items: center;
+    grid-template-columns: 30% 1fr;
     grid-gap: 0.5em;
 
-    font-size: 16pt;
-    font-weight: bold;
-    font-family: sans-serif;
+    margin-top: 1em;
+    padding: 0.5em;
 
-    margin-top: 2em;
-    padding: 1em;
-}
-
-#jasstafel div {
     color: white;
-}
-
-#jasstafel div.label {
-    text-align: right;
 }
 
 #jasstafel label {
-    color: white;
     text-align: right;
+    width: 100%;
+    display: inline-block;
+}
+
+#rangeContainer {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#jasstafel input[type="range"] {
+    width: 100%;
 }
 
 #jasstafel input[type="text"] {
-    text-align: right;
+    width: 6em;
 }
 
-#balanceContainer {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: minmax(4em, auto) 3em;
-    grid-gap: 0.5em;
-    align-items: center;
-    justify-items: center;
-    padding: 5px;
-}
-
-#balance {
-    width: 100%;
-    height: 2em;
-    font-weight: bold;
-    font-size: 16pt;
-}
-
-#betContainer {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 3em 1fr 3em;
-    grid-gap: 0.5em;
-    align-items: center;
-    justify-items: center;
-    padding: 5px;
-}
-
-#jasstafel input[type="number"] {
-    width: 100%;
-    height: 2em;
-    text-align: right;
-    font-size: 16pt;
+#jasstafel .betButtonContainer {
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 #jasstafel button.bet {
-    width: 80%;
-    height: 2.5em;
-    font-size: 16pt;
-    font-weight: bold;
-}
-
-#minmax {
-    text-align: center;
-}
-
-#jasstafel button.minmax {
-    width: 3em;
+    width: 100%;
+    height: 2em;
 }
 
 #jasstafel #notification {
-    grid-column-start: 1;
-    grid-column-end: 3;
 }
 
 #jasstafel #message {
@@ -229,4 +166,39 @@ section.blabla p {
 #stereoalag {
     margin-top: 1em;
     text-align: center;
+}
+
+/* TODO: make collapsible */
+section.intro div {
+    padding: 0.5em 1em;
+    border: 1px solid black;
+    background-color: white;
+    hyphens: auto;
+    box-shadow: 5px 5px 1em black;
+}
+
+section.intro p {
+    text-align: justify;
+}
+
+#bilderwand {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 250px 1fr;
+    grid-gap: 0 0.5em;
+    justify-items: center;
+    overflow: scroll;
+}
+
+#bilderwand img {
+    height: 250px;
+}
+
+#bilderwand p {
+    border: 1px solid gold;
+    background-color: #8b4513;
+    color: #d3d3d3;
+    padding: 0.5em;
+    font-weight: bold;
+    font-variant: small-caps;
 }

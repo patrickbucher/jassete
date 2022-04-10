@@ -137,8 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const betInput = document.getElementById("bet");
     const higherButton = document.getElementById("higher");
     const lowerButton = document.getElementById("lower");
-    const minButton = document.getElementById("minBet");
-    const maxButton = document.getElementById("maxBet");
     const messageContainer = document.getElementById("message");
     const cardX = document.getElementById("cardX");
     const cardY = document.getElementById("cardY");
@@ -258,14 +256,5 @@ document.addEventListener("DOMContentLoaded", () => {
     lowerButton.addEventListener("click", (e) => {
         e.preventDefault();
         makeBet("lower");
-    });
-
-    minButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        betInput.value = betInput.getAttribute("min");
-    });
-    maxButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        betInput.value = balanceInput.value;
     });
 });
