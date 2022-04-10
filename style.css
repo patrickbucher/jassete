@@ -98,11 +98,20 @@ h2 {
 
 #cardstack img {
     width: 161px;
-    height: 247px;
 }
 
 #cardstack img:not(:first-child) {
     margin-top: -210px;
+}
+
+@media only screen and (max-width: 600px) {
+    #cardstack img {
+        width: 100px;
+    }
+
+    #cardstack img:not(:first-child) {
+        margin-top: -60px;
+    }
 }
 
 #fortschritt {
