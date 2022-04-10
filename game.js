@@ -258,12 +258,12 @@ document.addEventListener("DOMContentLoaded", () => {
             newCard.compareTo(lastCard) < 0 && decision === "lower") {
             balance += bet;
             notify(`Huere Glöggliböög! Du gewinnst ${formatNumber(bet)}!`);
-            flash(betDisplay, "fg-green", 500);
+            flash(betDisplay, "bg-green", 500);
             flash(balanceOutput, "bg-green", 500);
         } else {
             balance -= bet;
             notify(`Huere Söörmu! Du verlierst ${formatNumber(bet)}!`);
-            flash(betDisplay, "fg-red", 500);
+            flash(betDisplay, "bg-red", 500);
             flash(balanceOutput, "bg-red", 500);
         }
         balance = round(balance, granularity);

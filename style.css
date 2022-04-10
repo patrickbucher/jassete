@@ -1,11 +1,13 @@
 body {
+    font-family: serif;
     background-color: #efefef;
     color: #101010;
     background-image: url("assets/tischdecke.jpg");
     background-repeat: repeat-x repeat-y;
-    min-width: 350px;
+    min-width: 340px;
     max-width: 920px;
     margin: 0 auto;
+    padding: 0.5em;
 }
 
 h1, h2 {
@@ -147,24 +149,14 @@ h2 {
     text-align: center;
 }
 
-.fg-red {
-    color: red !important;
-}
-
-.fg-green {
-    color: green !important;
-}
-
 .bg-red {
     background-color: red !important;
+    color: white !important;
 }
 
 .bg-green {
     background-color: green !important;
-}
-
-#betDisplay {
-    font-family: monospace;
+    color: white !important;
 }
 
 #jasstafel div#notification {
@@ -177,7 +169,7 @@ h2 {
     font-weight: bold;
 }
 
-#balance {
+#betDisplay, #balance {
     border: 1px solid grey;
     background-color: white;
     font-weight: bold;

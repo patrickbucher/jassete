@@ -35,11 +35,11 @@
             </div>
         </section>
         <div id="jasstafel">
-            <div id="rangeContainer">
-                <input id="betRange" type="range" step="0.05">
-            </div>
             <div class="centered">
                 Einsatz: <span id="betDisplay" class="centered" data-value="0.0">0.00</span>
+            </div>
+            <div id="rangeContainer">
+                <input id="betRange" type="range" step="0.05">
             </div>
             <div>
                 <button class="bet" id="higher">Höher</button>
@@ -47,8 +47,7 @@
             <div>
                 <button class="bet" id="lower">Tiefer</button>
             </div>
-            <div class="centered">Kontostand</div>
-            <div class="centered"><p id="balance" data-value="0.0"></p></div>
+            <div class="centered">Konto: <span id="balance" data-value="0.0"></span></div>
             <div id="notification">
                 <p>Sepp Trütsch sagt: <span id="message">«Verreckte Herrgottscheib, los!»</span></p>
             </div>
