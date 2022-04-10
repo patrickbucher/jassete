@@ -17,7 +17,7 @@
                 <div class="rand links"></div>
                 <div id="spielfeld">
                     <div><img class="symbol" src="assets/rose.png" alt="Rose"></div>
-                    <div></div>
+                    <div><p id="fortschritt">Karte <span id="cardX"></span>/<span id="cardY"></span></p></div>
                     <div><img class="symbol" src="assets/schilte.png" alt="Schlte"></div>
                     <div></div>
                     <div>
@@ -25,7 +25,7 @@
                     </div>
                     <div></div>
                     <div><img class="symbol" src="assets/eichel.png" alt="Eichel"></div>
-                    <div><p id="fortschritt">Karte <span id="cardX"></span>/<span id="cardY"></span></p></div>
+                    <div></div>
                     <div><img class="symbol" src="assets/schelle.png" alt="Schelle"></div>
                 </div>
                 <div class="rand rechts"></div>
@@ -35,14 +35,12 @@
             </div>
         </section>
         <div id="jasstafel">
-            <div id="notification">
-                <p>Sepp Trütsch sagt: <span id="message">«Verreckte Herrgottscheib, los!»</span></p>
-            </div>
-            <div class="centered">Einsatz</div>
             <div id="rangeContainer">
                 <input id="betRange" type="range" step="0.05">
             </div>
-            <div id="betDisplay" class="centered" data-value="0.0">0.00</div>
+            <div class="centered">
+                Einsatz: <span id="betDisplay" class="centered" data-value="0.0">0.00</span>
+            </div>
             <div>
                 <button class="bet" id="higher">Höher</button>
             </div>
@@ -51,6 +49,9 @@
             </div>
             <div class="centered">Kontostand</div>
             <div class="centered"><p id="balance" data-value="0.0"></p></div>
+            <div id="notification">
+                <p>Sepp Trütsch sagt: <span id="message">«Verreckte Herrgottscheib, los!»</span></p>
+            </div>
         </div>
         <section id="stereoalag">
             <h2>Löpfige Hudigäggeler</h2>

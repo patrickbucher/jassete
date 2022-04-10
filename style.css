@@ -111,7 +111,6 @@ h2 {
     padding: 5px;
     font-weight: bold;
     font-variant: small-caps;
-    font-size: 90%;
 }
 
 #jasstafel {
@@ -175,14 +174,12 @@ h2 {
 #jasstafel button.bet {
     width: 100%;
     height: 3em;
-    font-size: 120%;
     font-weight: bold;
 }
 
 #balance {
     border: 1px solid grey;
     background-color: white;
-    font-size: 120%;
     font-weight: bold;
     font-family: monospace;
     color: black;
