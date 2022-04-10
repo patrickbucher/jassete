@@ -133,8 +133,9 @@ function round(value, granularity) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const stackContainer = document.getElementById("cardstack");
-    const balanceInput = document.getElementById("balance");
-    const betInput = document.getElementById("bet");
+    const balanceOutput = document.getElementById("balance");
+    const betRange = document.getElementById("betRange");
+    const betDisplay = document.getElementById("betDisplay");
     const higherButton = document.getElementById("higher");
     const lowerButton = document.getElementById("lower");
     const messageContainer = document.getElementById("message");
@@ -145,10 +146,38 @@ document.addEventListener("DOMContentLoaded", () => {
         messageContainer.innerHTML = `«${message}»`;
     };
 
+    // Swiss game, Swiss format
+    const locale = Intl.NumberFormat("de-CH", {
+        style: "currency",
+        currency: "CHF",
+    });
+    const formatNumber = (x) => {
+        return locale.format(x);
+    };
+
     const updateControls = (balance, nCardsPlayed) => {
-        balanceInput.value = balance;
-        betInput.setAttribute("max", balance);
+        balanceOutput.innerHTML = `${formatNumber(balance)}`;
+        balanceOutput.setAttribute("data-value", balance);
+        betRange.setAttribute("min", 0.05);
+        betRange.setAttribute("max", balance);
         cardX.innerHTML = nCardsPlayed;
+    };
+
+    const updateBet = (bet) => {
+        betRange.setAttribute("value", bet);
+        betDisplay.innerHTML = `${formatNumber(bet)}`;
+        betDisplay.setAttribute("data-value", bet);
+    };
+
+    const updateBetDisplay = (value) => {
+        const number = Number.parseFloat(value);
+        betDisplay.innerHTML = `${formatNumber(number)}`;
+        betDisplay.setAttribute("data-value", number);
+    };
+
+    const flash = (element, cssClass, duration) => {
+        element.classList.add(cssClass);
+        setTimeout(() => element.classList.remove(cssClass), duration);
     };
 
     const proposeBet = (probs, balance, granularity) => {
@@ -183,13 +212,14 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     };
 
-    const minBet = Number.parseFloat(betInput.getAttribute("min"));
-    const granularity = Number.parseFloat(betInput.getAttribute("step"));
+    const minBet = Number.parseFloat(betRange.getAttribute("min"));
+    const granularity = Number.parseFloat(betRange.getAttribute("step"));
 
     let deck = shuffle(createDeck());
     let balance = 1.0;
     let defaultBet = 0.05;
-    betInput.value = `${defaultBet}`;
+    updateBet(defaultBet);
+
     cardY.innerHTML = deck.length;
 
     let {card: lastCard, deck: newDeck} = pullCard(deck);
@@ -208,18 +238,18 @@ document.addEventListener("DOMContentLoaded", () => {
             notify("Huere Lappi! Alle Karten wurden bereits gespielt!");
             return
         }
-        const bet = Number.parseFloat(betInput.value);
+        const bet = Number.parseFloat(betDisplay.getAttribute("data-value"));
         if (Number.isNaN(bet)) {
-            notify(`Huere Löli! ‹${betInput.value}› ist doch keine Gebot!`);
+            notify(`Huere Löli! ‹${betRange.value}› ist doch keine Gebot!`);
             return;
         } else if (bet < minBet) {
-            notify(`Huere Löli! ‹${bet}› zu bieten ist doch s Bättle versuumet!`);
+            notify(`Huere Löli! ‹${formatNumber(bet)}› zu bieten ist doch s Bättle versuumet!`);
             return;
         } else if (balance == 0) {
             notify(`Huere Fötzu! Du hast ja alles verspielt!`);
             return;
         } else if (bet > balance) {
-            notify(`Huere Plagöri! Du hast ja nur ${balance}!`);
+            notify(`Huere Plagöri! Du hast ja nur ${formatNumber(balance)}!`);
             return;
         }
         let {card: newCard, deck: newDeck} = pullCard(deck);
@@ -227,10 +257,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (newCard.compareTo(lastCard) > 0 && decision === "higher" ||
             newCard.compareTo(lastCard) < 0 && decision === "lower") {
             balance += bet;
-            notify(`Huere Glöggliböög! Du gewinnst ${bet}!`);
+            notify(`Huere Glöggliböög! Du gewinnst ${formatNumber(bet)}!`);
+            flash(betDisplay, "fg-green", 500);
+            flash(balanceOutput, "bg-green", 500);
         } else {
             balance -= bet;
-            notify(`Huere Söörmu! Du verlierst ${bet}!`);
+            notify(`Huere Söörmu! Du verlierst ${formatNumber(bet)}!`);
+            flash(betDisplay, "fg-red", 500);
+            flash(balanceOutput, "bg-red", 500);
         }
         balance = round(balance, granularity);
         deck = newDeck;
@@ -238,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateControls(balance, ++nCardsPlayed);
         if (deck.length == 0) {
             setTimeout(() => {
-                notify(`Das Spiel ist vorbei. Du hast ${balance} Stutz gewonnen!`);
+                notify(`Das Spiel ist vorbei. Du hast ${formatNumber(balance)} Stutz gewonnen!`);
             }, 2000);
         } else if (balance == 0) {
             setTimeout(() => {
@@ -256,5 +290,12 @@ document.addEventListener("DOMContentLoaded", () => {
     lowerButton.addEventListener("click", (e) => {
         e.preventDefault();
         makeBet("lower");
+    });
+
+    betRange.addEventListener("change", (e) => {
+        updateBetDisplay(betRange.value);
+    });
+    betRange.addEventListener("input", (e) => {
+        updateBetDisplay(betRange.value);
     });
 });

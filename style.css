@@ -4,6 +4,8 @@ body {
     background-image: url("assets/tischdecke.jpg");
     background-repeat: repeat-x repeat-y;
     min-width: 350px;
+    max-width: 920px;
+    margin: 0 auto;
 }
 
 h1, h2 {
@@ -98,7 +100,7 @@ h2 {
 }
 
 #cardstack img:not(:first-child) {
-    margin-top: -200px;
+    margin-top: -210px;
 }
 
 #fortschritt {
@@ -116,21 +118,21 @@ h2 {
     border: 2em solid #c4a484;
     border-radius: 2em;
     background-color: black;
-
-    display: grid;
-    grid-template-columns: 30% 1fr;
-    grid-gap: 0.5em;
-
     margin-top: 1em;
     padding: 0.5em;
-
     color: white;
 }
 
-#jasstafel label {
-    text-align: right;
-    width: 100%;
-    display: inline-block;
+#jasstafel div {
+    margin: 1em;
+}
+
+#notification {
+    margin-top: 2em;
+}
+
+#jasstafel #message {
+    font-style: italic;
 }
 
 #rangeContainer {
@@ -142,25 +144,49 @@ h2 {
     width: 100%;
 }
 
-#jasstafel input[type="text"] {
-    width: 6em;
+.centered {
+    text-align: center;
 }
 
-#jasstafel .betButtonContainer {
-    grid-column-start: 1;
-    grid-column-end: 3;
+.fg-red {
+    color: red !important;
+}
+
+.fg-green {
+    color: green !important;
+}
+
+.bg-red {
+    background-color: red !important;
+}
+
+.bg-green {
+    background-color: green !important;
+}
+
+#betDisplay {
+    font-family: monospace;
+}
+
+#jasstafel div#notification {
+    line-height: 150%;
 }
 
 #jasstafel button.bet {
     width: 100%;
-    height: 2em;
+    height: 3em;
+    font-size: 120%;
+    font-weight: bold;
 }
 
-#jasstafel #notification {
-}
-
-#jasstafel #message {
-    font-style: italic;
+#balance {
+    border: 1px solid grey;
+    background-color: white;
+    font-size: 120%;
+    font-weight: bold;
+    font-family: monospace;
+    color: black;
+    padding: 5px 0.5em;
 }
 
 #stereoalag {
@@ -168,7 +194,6 @@ h2 {
     text-align: center;
 }
 
-/* TODO: make collapsible */
 section.intro div {
     padding: 0.5em 1em;
     border: 1px solid black;
@@ -187,7 +212,7 @@ section.intro p {
     grid-template-rows: 250px 1fr;
     grid-gap: 0 0.5em;
     justify-items: center;
-    overflow: scroll;
+    overflow-x: auto;
 }
 
 #bilderwand img {
