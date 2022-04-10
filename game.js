@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateControls(balance, ++nCardsPlayed);
         if (deck.length == 0) {
             setTimeout(() => {
-                notify(`Das Spiel ist vorbei. Du hast ${formatNumber(balance)} Stutz gewonnen!`);
+                notify(`Das Spiel ist vorbei. Du hast ${formatNumber(balance)} gewonnen!`);
             }, 2000);
         } else if (balance == 0) {
             setTimeout(() => {
