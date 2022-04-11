@@ -307,10 +307,11 @@ document.addEventListener("DOMContentLoaded", () => {
             flash(betDisplay, "bg-red", 500);
             flash(balanceOutput, "bg-red", 500);
         }
-        balance = round(balance, granularity);
         deck = newDeck;
         lastCard = newCard;
+        balance = round(balance, granularity);
         updateControls(balance, ++nCardsPlayed);
+        updateBet(bet > balance ? balance : bet);
         if (deck.length == 0) {
             finish(`Das Spiel ist vorbei. Du hast ${formatNumber(balance)} gewonnen!`);
         } else if (balance == 0) {
