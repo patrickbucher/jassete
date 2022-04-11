@@ -143,9 +143,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const betDisplay = document.getElementById("betDisplay");
     const higherButton = document.getElementById("higher");
     const lowerButton = document.getElementById("lower");
+    const restartButton = document.getElementById("restart");
     const messageContainer = document.getElementById("message");
     const cardX = document.getElementById("cardX");
     const cardY = document.getElementById("cardY");
+
+    const minBet = Number.parseFloat(betRange.getAttribute("min"));
+    const granularity = Number.parseFloat(betRange.getAttribute("step"));
+
 
     const notify = (message) => {
         messageContainer.innerHTML = `«${message}»`;
@@ -185,6 +190,45 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => element.classList.remove(cssClass), duration);
     };
 
+    const init = () => {
+        while (cardstack.hasChildNodes()) {
+            const child = cardstack.children[0];
+            cardstack.removeChild(child);
+        }
+
+        const deck = shuffle(createDeck());
+        const {card: lastCard, deck: newDeck} = pullCard(deck);
+        const balance = 1.0;
+        const defaultBet = 0.05;
+        const nCardsPlayed = 1;
+
+        updateBet(defaultBet);
+        cardY.innerHTML = deck.length;
+        layCard(lastCard, stackContainer);
+        updateControls(balance, nCardsPlayed);
+
+        betRange.removeAttribute("disabled");
+        lowerButton.removeAttribute("disabled");
+        higherButton.removeAttribute("disabled");
+
+        return {
+            deck: newDeck,
+            lastCard: lastCard,
+            balance: balance,
+            defaultBet: defaultBet,
+            nCardsPlayed: nCardsPlayed,
+        };
+    };
+
+    const finish = (message) => {
+        higherButton.setAttribute("disabled", "disabled");
+        lowerButton.setAttribute("disabled", "disabled");
+        betRange.setAttribute("disabled", "disabled");
+        setTimeout(() => {
+            notify(message)
+        }, 2000);
+    };
+
     const proposeBet = (probs, balance, granularity) => {
         const {outcome, prob} = probs.reduce(({outcome: maxO, prob: maxP}, {outcome: o, prob: p}) => {
             if (p > maxP) {
@@ -217,23 +261,15 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     };
 
-    const minBet = Number.parseFloat(betRange.getAttribute("min"));
-    const granularity = Number.parseFloat(betRange.getAttribute("step"));
+    let {
+        deck: deck,
+        lastCard: lastCard,
+        balance: balance,
+        defaultBet: defaultBet,
+        nCardsPlayed: nCardsPlayed,
+    } = init();
 
-    let deck = shuffle(createDeck());
-    let balance = 1.0;
-    let defaultBet = 0.05;
-    updateBet(defaultBet);
-
-    cardY.innerHTML = deck.length;
-
-    let {card: lastCard, deck: newDeck} = pullCard(deck);
-    let nCardsPlayed = 1;
-    layCard(lastCard, stackContainer);
-    updateControls(balance, nCardsPlayed);
-    deck = newDeck;
-
-    console.log(proposeBet(calcProbabilities(lastCard, newDeck), balance, granularity));
+    console.log(proposeBet(calcProbabilities(lastCard, deck), balance, granularity));
 
     // TODO: refactoring
     // - accept last card, remaining deck, bet
@@ -276,13 +312,9 @@ document.addEventListener("DOMContentLoaded", () => {
         lastCard = newCard;
         updateControls(balance, ++nCardsPlayed);
         if (deck.length == 0) {
-            setTimeout(() => {
-                notify(`Das Spiel ist vorbei. Du hast ${formatNumber(balance)} gewonnen!`);
-            }, 2000);
+            finish(`Das Spiel ist vorbei. Du hast ${formatNumber(balance)} gewonnen!`);
         } else if (balance == 0) {
-            setTimeout(() => {
-                notify(`Huere Fötzu! Du hast ja alles verspielt!`);
-            }, 2000);
+            finish(`Huere Fötzu! Du hast ja alles verspielt!`);
         } else {
             console.log(proposeBet(calcProbabilities(lastCard, newDeck), balance, granularity));
         }
@@ -302,5 +334,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     betRange.addEventListener("input", (e) => {
         updateBetDisplay(betRange.value);
+    });
+
+    restartButton.addEventListener("click", (e) => {
+        let {
+            deck: newDeck,
+            lastCard: newLastCard,
+            balance: newDefaultBalance,
+            defaultBet: newDefaultBet,
+            nCardsPlayed: newNCardsPlayed,
+        } = init();
+
+        deck = newDeck;
+        lastCard = newLastCard;
+        balance = newDefaultBalance;
+        defaultBet = newDefaultBet;
+        nCardsPlayed = newNCardsPlayed;
     });
 });

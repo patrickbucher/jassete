@@ -141,7 +141,8 @@ h2 {
     margin-top: 2em;
 }
 
-#jasstafel #message {
+#message {
+    margin-top: 2em;
     font-style: italic;
 }
 
@@ -172,7 +173,7 @@ h2 {
     line-height: 150%;
 }
 
-#jasstafel button.bet {
+#jasstafel button.bigButton {
     width: 100%;
     height: 3em;
     font-weight: bold;
