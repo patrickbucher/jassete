@@ -3,7 +3,6 @@ body {
     background-color: #efefef;
     color: #101010;
     background-image: url("assets/tischdecke.jpg");
-    background-repeat: repeat-x repeat-y;
     min-width: 340px;
     max-width: 920px;
     margin: 0 auto;

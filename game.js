@@ -90,10 +90,11 @@ function layCard(card, container) {
     const cardImage = document.createElement("img");
     const posX = randint(container.clientWidth - imgWidth);
     const posY = randint(container.clientHeight - imgHeight);
+    const rotation = randint(180);
     cardImage.setAttribute("src", card.imagePath());
     cardImage.setAttribute("alt", card.name());
     cardImage.setAttribute("class", "card");
-    cardImage.setAttribute("style", `left: ${posX}px; top: ${posY}px;`);
+    cardImage.setAttribute("style", `left: ${posX}px; top: ${posY}px; transform: rotate(${rotation}deg);`);
     container.appendChild(cardImage)
 }
 
