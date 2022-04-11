@@ -86,9 +86,12 @@ function shuffle(deck) {
 
 function layCard(card, container) {
     const cardImage = document.createElement("img");
+    const posX = randint(container.clientWidth - 161);
+    const posY = randint(container.clientHeight - 247);
     cardImage.setAttribute("src", card.imagePath());
     cardImage.setAttribute("alt", card.name());
     cardImage.setAttribute("class", "card");
+    cardImage.setAttribute("style", `left: ${posX}px; top: ${posY}px;`);
     container.appendChild(cardImage)
 }
 
