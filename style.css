@@ -103,6 +103,17 @@ h2 {
     height: 247px;
 }
 
+@media only screen and (max-width: 700px) {
+    #cardstack {
+        height: 200px;
+    }
+
+    #cardstack img {
+        width: 80px;
+        height: 123px;
+    }
+}
+
 #fortschritt {
     border: 1px solid gold;
     background-color: #8b4513;
